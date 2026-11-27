@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ป่านขายขนมเค้ก</title>
+    
+    <!-- Editorial + Thai typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-progress" aria-hidden="true"></div>
+    <canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas>
+
+    <!-- หน้าจอโหลดเปิดม่าน (Luxury Curtain Preloader) -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <span class="preloader-logo">ป่านขายขนมเค้ก</span>
+            <div class="preloader-line"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- แถบเมนูด้านบน (Glassmorphism Navbar) -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="brand-logo">
+                <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+                    <path d="M12 26h24l-3 17H15l-3-17Z" />
+                    <path d="M16 26c-4-1-5-7 0-9 0-7 10-9 13-3 6-1 9 5 5 9 2 1 3 2 3 3" />
+                    <path d="M19 31v8m10-8v8M21 13c-2-4 3-7 5-3" />
+                </svg>
+                <span class="brand-copy">
+                    <strong>ป่านขายขนมเค้ก</strong>
+                    <small>BAKERY &amp; PATISSERIE</small>
+                </span>
+            </a>
+            <nav class="nav-links" id="nav-links" aria-label="เมนูหลัก">
+                <a href="#home" class="hover-link active">Home</a>
+                <a href="#collection" class="hover-link">Signature</a>
+                <a href="#drinks" class="hover-link">Drinks</a>
+                <a href="#snacks" class="hover-link">Snacks</a>
+                <a href="#contact" class="hover-link">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="เปิดเมนูนำทาง" aria-controls="nav-links" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" />
+                    </svg>
+                </button>
+                <button class="admin-trigger" id="open-admin" aria-label="เปิดระบบแอดมิน">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="8" r="3.5" />
+                        <path d="M5 20c.5-4 3-6 7-6s6.5 2 7 6" />
+                    </svg>
+                </button>
+                <button class="cart-btn hover-target" id="open-cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 2-1.6L21 8H6" />
+                        <circle cx="10" cy="20" r="1" />
+                        <circle cx="18" cy="20" r="1" />
+                    </svg>
+                    <span class="visually-hidden">ตะกร้าสินค้า</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ส่วนหัวเว็บไซต์ (Hero Section) -->
+    <section class="hero" id="home">
+        <div class="hero-bg-glow"></div>
+        <div class="hero-orb hero-orb-one"></div>
+        <div class="hero-orb hero-orb-two"></div>
+        <div class="hero-container">
+            <div class="hero-text">
+                <p class="subtitle reveal-text">BANGKOK ARTISAN PATISSERIE</p>
+                <h1 class="title">
+                    <span class="line-wrap"><span class="reveal-line">เค้กสำหรับ</span></span>
+                    <span class="line-wrap"><span class="reveal-line italic-en">ทุกช่วงเวลาพิเศษ</span></span>
+                </h1>
+                <p class="description reveal-fade">
+                    “เพราะทุกช่วงเวลาของคุณ...สมควรมีความหวาน”
+                </p>
+                <div class="hero-actions reveal-fade">
+                    <a href="#collection" class="btn-primary magnetic-btn">
+                        <span>สั่งจองเค้กเลย</span>
+                        <span class="button-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a href="#collection" class="hero-more">
+                        <span class="hero-play" aria-hidden="true">▶</span>
+                        <span>ดูเมนูเพิ่มเติม</span>
+                    </a>
+                </div>
+                <div class="hero-highlights reveal-fade" aria-label="จุดเด่นของร้าน">
+                    <div class="hero-feature">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path d="M7 14h18l-2 14H9L7 14Z" />
+                            <path d="M10 14c-3-1-3-6 1-7 1-5 8-5 10 0 4 0 5 5 2 7" />
+                            <path d="M12 18v6m8-6v6" />
+                        </svg>
+                        <span><strong>วัตถุดิบพรีเมียม</strong><small>Premium Ingredients</small></span>
+                    </div>
+                    <div class="hero-feature">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path d="m16 4 12 9-12 15L4 13l12-9Z" />
+                            <path d="M4 13h24M16 4l-4 9 4 15 4-15-4-9Z" />
+                        </svg>
+                        <span><strong>ทำสดใหม่ทุกวัน</strong><small>Freshly Baked Daily</small></span>
+                    </div>
+                    <div class="hero-feature">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path d="M16 27S4 20 4 11a6 6 0 0 1 12-1 6 6 0 0 1 12 1c0 9-12 16-12 16Z" />
+                        </svg>
+                        <span><strong>ใส่ใจในทุกรายละเอียด</strong><small>Made with Love</small></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="image-frame parallax-frame hero-cake-frame">
+                    <img src="images/petite-celebration.png" alt="เค้กครีมสีชมพูตกแต่งด้วยดอกกุหลาบและโบว์" fetchpriority="high">
+                    <span class="frame-index">PAAN · 01</span>
+                    <div class="floating-badge">
+                        <span>Fresh</span>
+                        <small>made with love</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="hero-scroll" href="#collection">
+            <span class="scroll-mouse" aria-hidden="true"></span>
+            <span>Scroll Down</span>
+            <span aria-hidden="true">⌄</span>
+        </a>
+    </section>
+
+    <div class="motion-marquee" aria-label="บริการของร้าน">
+        <div class="marquee-track">
+            <span>BAKED FRESH DAILY</span><i></i>
+            <span>MADE BY HAND</span><i></i>
+            <span>PREMIUM INGREDIENTS</span><i></i>
+            <span>FESTIVE COLLECTION</span><i></i>
+            <span>BAKED FRESH DAILY</span><i></i>
+            <span>MADE BY HAND</span><i></i>
+        </div>
+    </div>
+
+    <!-- ส่วนแสดงรายการเค้ก (Signature Collection) -->
+    <section id="collection" class="collection">
+        <div class="section-header">
+            <span class="section-tag">CURATED SELECTION</span>
+            <h2 class="section-title">Signature Cakes</h2>
+        </div>
+
+        <div class="menu-filters" aria-label="ตัวกรองเมนู">
+            <button class="menu-filter active" type="button" data-filter="All">ทั้งหมด</button>
+            <button class="menu-filter" type="button" data-filter="Cake">เค้ก</button>
+            <button class="menu-filter" type="button" data-filter="Chocolate">ช็อกโกแลต</button>
+            <button class="menu-filter" type="button" data-filter="Fruit">ผลไม้</button>
+            <button class="menu-filter" type="button" data-filter="Tea">ชาญี่ปุ่น</button>
+            <button class="menu-filter" type="button" data-filter="Mini">มินิเดอเซิร์ต</button>
+        </div>
+
+        <div class="cake-grid" id="cake-grid">
+            <!-- การ์ดที่ 1 -->
+            <article class="cake-card tilt-card">
+                <div class="card-image-wrap">
+                    <img src="images/noir-et-fraise.png" alt="Noir et Fraise Chocolate Strawberry Cake" loading="eager">
+                    <button class="quick-add hover-target" data-name="Noir et Fraise" data-price="1450">
+                        + เพิ่มลงตะกร้า
+                    </button>
+                </div>
+                <div class="card-info">
+                    <div class="card-meta">
+                        <h3>Noir et Fraise</h3>
+                        <span class="price">฿1,450</span>
+                    </div>
+                    <p>สปันจ์วานิลลามาดากัสการ์ สลับชั้นครีมสดฮอกไกโดและสตรอว์เบอร์รีออร์แกนิก</p>
+                </div>
+            </article>
+
+            <!-- การ์ดที่ 2 -->
+            <article class="cake-card tilt-card">
+                <div class="card-image-wrap">
+                    <img src="images/lor-salted-caramel.png" alt="L’Or Salted Caramel Cake" loading="eager">
+                    <button class="quick-add hover-target" data-name="L’Or Salted Caramel" data-price="1690">
+                        + เพิ่มลงตะกร้า
+                    </button>
+                </div>
+                <div class="card-info">
+                    <div class="card-meta">
+                        <h3>L’Or Salted Caramel</h3>
+                        <span class="price">฿1,690</span>
+                    </div>
+                    <p>มูสช็อกโกแลต 70% สอดไส้ซอลท์เท็ดคาราเมลโฮมเมด ตกแต่งทองคำเปลวบริสุทธิ์</p>
+                </div>
+            </article>
+
+            <!-- การ์ดที่ 3 -->
+            <article class="cake-card tilt-card">
+                <div class="card-image-wrap">
+                    <img src="images/uji-matcha-opera.png" alt="Uji Matcha Opera Cake" loading="eager">
+                    <button class="quick-add hover-target" data-name="Uji Matcha Opera" data-price="1550">
+                        + เพิ่มลงตะกร้า
+                    </button>
+                </div>
+                <div class="card-info">
+                    <div class="card-meta">
+                        <h3>Uji Matcha Opera</h3>
+                        <span class="price">฿1,550</span>
+                    </div>
+                    <p>เค้กโอเปร่า 7 เลเยอร์ ผสานมัทฉะเกรดพิธีการจากเมืองอุจิและอัลมอนด์อบกรอบ</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ส่วนเครื่องดื่มแยกเป็นโซนต่างหาก -->
+    <section id="drinks" class="drinks-section">
+        <div class="section-header">
+            <span class="section-tag">ARTISAN BEVERAGES</span>
+            <h2 class="section-title">Patisserie Drinks</h2>
+        </div>
+        <div class="drinks-grid cake-grid" id="drinks-grid"></div>
+    </section>
+
+    <!-- ของกินเล่นแยกจากเมนูเค้กและเครื่องดื่ม -->
+    <section id="snacks" class="snacks-section">
+        <div class="section-header">
+            <span class="section-tag">AFFORDABLE BITES</span>
+            <h2 class="section-title">ของกินเล่น</h2>
+            <p class="snacks-note">อร่อยเพลิน ราคาเบา ๆ เริ่มต้นเพียง ฿20</p>
+        </div>
+        <div class="snacks-grid cake-grid" id="snacks-grid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <h2 class="footer-logo">ป่านขายขนมเค้ก</h2>
+            <p>Sukhumvit 49, Bangkok • เปิดบริการทุกวัน 10:00 – 19:00 น.</p>
+            <div class="footer-bottom">
+                <span>© 2026 ป่านขายขนมเค้ก. สงวนลิขสิทธิ์</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- แถบตะกร้าสินค้า (Slide-out Cart Drawer) -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Selection</h3>
+            <button class="close-cart hover-target" id="close-cart">✕</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="empty-msg">ยังไม่มีรายการขนมในตะกร้า</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>ยอดรวมทั้งหมด</span>
+                <span id="cart-total-price">฿0</span>
+            </div>
+            <button class="btn-checkout" id="checkout-btn">ดำเนินการสั่งซื้อ</button>
+        </div>
+    </aside>
+
+    <!-- การแจ้งเตือน (Luxury Toast Notification) -->
+    <div class="toast" id="toast">เพิ่มลงในตะกร้าเรียบร้อยแล้ว</div>
+
+    <!-- ระบบแอดมิน -->
+    <div class="admin-overlay" id="admin-overlay"></div>
+    <section class="admin-panel" id="admin-panel" aria-label="ระบบผู้ดูแล">
+        <div class="admin-login" id="admin-login">
+            <div class="admin-login-mark">A</div>
+            <p class="admin-eyebrow">ATELIER MANAGEMENT</p>
+            <h2>เข้าสู่ระบบแอดมิน</h2>
+            <p class="admin-login-copy">จัดการเมนูและข้อมูลร้านของคุณ</p>
+            <form id="admin-login-form">
+                <label for="admin-password">รหัสผ่าน</label>
+                <div class="password-wrap">
+                    <input id="admin-password" type="password" autocomplete="current-password" placeholder="กรอกรหัสผ่าน" required>
+                    <button type="button" id="toggle-password" aria-label="แสดงรหัสผ่าน">แสดง</button>
+                </div>
+                <p class="login-error" id="login-error">รหัสผ่านไม่ถูกต้อง</p>
+                <button class="admin-login-button" type="submit">เข้าสู่ระบบ</button>
+            </form>
+        </div>
+
+        <div class="admin-dashboard" id="admin-dashboard">
+            <header class="admin-header">
+                <div>
+                    <p class="admin-eyebrow">ป่านขายขนมเค้ก</p>
+                    <h2>แดชบอร์ด</h2>
+                </div>
+                <button class="admin-close" id="close-admin" aria-label="ปิดระบบแอดมิน">✕</button>
+            </header>
+
+            <div class="admin-stats">
+                <article>
+                    <span>สินค้าในคอลเลกชัน</span>
+                    <strong id="admin-product-count">14</strong>
+                </article>
+                <article>
+                    <span>สินค้าในตะกร้าตัวอย่าง</span>
+                    <strong id="admin-cart-count">0</strong>
+                </article>
+                <article>
+                    <span>มูลค่ารวมตัวอย่าง</span>
+                    <strong id="admin-cart-total">฿0</strong>
+                </article>
+            </div>
+
+            <div class="admin-toolbar">
+                <div>
+                    <p class="admin-eyebrow">CATALOG</p>
+                    <h3>จัดการสินค้า</h3>
+                </div>
+                <button class="add-product" id="add-product">+ เพิ่มสินค้า</button>
+            </div>
+            <div class="admin-products" id="admin-products"></div>
+
+            <form class="product-editor" id="product-editor">
+                <input type="hidden" id="edit-index" value="-1">
+                <div class="editor-heading">
+                    <h3 id="editor-title">เพิ่มสินค้าใหม่</h3>
+                    <button type="button" id="cancel-edit">ยกเลิก</button>
+                </div>
+                <div class="editor-grid">
+                    <label>ชื่อสินค้า
+                        <input id="product-name" required placeholder="ชื่อเค้ก">
+                    </label>
+                    <label>ราคา (บาท)
+                        <input id="product-price" type="number" min="0" required placeholder="1450">
+                    </label>
+                    <label>หมวดเมนู
+                        <select id="product-category">
+                            <option value="Cake">เค้ก</option>
+                            <option value="Chocolate">ช็อกโกแลต</option>
+                            <option value="Fruit">ผลไม้</option>
+                            <option value="Tea">ชาญี่ปุ่น</option>
+                            <option value="Mini">มินิเดอเซิร์ต</option>
+                            <option value="Drink">เครื่องดื่ม</option>
+                            <option value="Snack">ของกินเล่น</option>
+                        </select>
+                    </label>
+                    <label class="full-field">รายละเอียด
+                        <textarea id="product-description" rows="3" required placeholder="รายละเอียดสินค้า"></textarea>
+                    </label>
+                    <label class="full-field">รูปภาพ
+                        <input id="product-image" type="text" required placeholder="images/student-strawberry-slice.png หรือ https://...">
+                        <span class="image-field-help">วางไฟล์รูปไว้ในโฟลเดอร์ images แล้วกรอกพาธ เช่น images/student-strawberry-slice.png หรือกรอกลิงก์รูปออนไลน์</span>
+                    </label>
+                </div>
+                <button class="save-product" type="submit">บันทึกสินค้า</button>
+            </form>
+
+            <button class="admin-logout" id="admin-logout">ออกจากระบบ</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

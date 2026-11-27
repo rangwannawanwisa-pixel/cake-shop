@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="cookie" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2c985"/>
+      <stop offset="1" stop-color="#c7803e"/>
+    </linearGradient>
+    <radialGradient id="bg">
+      <stop offset="0" stop-color="#fffaf4"/>
+      <stop offset="1" stop-color="#f2e4d8"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <ellipse cx="400" cy="454" rx="244" ry="42" fill="#b18c6f" opacity=".16"/>
+  <ellipse cx="400" cy="420" rx="255" ry="94" fill="#fffdf9"/>
+  <ellipse cx="400" cy="410" rx="205" ry="68" fill="#ead7c5"/>
+  <circle cx="400" cy="342" r="151" fill="#a96936" opacity=".18"/>
+  <path d="M259 340c-2-82 60-146 143-146 76 0 143 58 147 138 4 77-56 147-137 153-83 6-151-58-153-145Z" fill="url(#cookie)" stroke="#b8773e" stroke-width="8"/>
+  <g fill="#603a2b">
+    <ellipse cx="346" cy="272" rx="15" ry="11" transform="rotate(-24 346 272)"/>
+    <ellipse cx="420" cy="252" rx="17" ry="12" transform="rotate(18 420 252)"/>
+    <ellipse cx="477" cy="302" rx="15" ry="11" transform="rotate(-18 477 302)"/>
+    <ellipse cx="309" cy="345" rx="16" ry="11" transform="rotate(22 309 345)"/>
+    <ellipse cx="385" cy="330" rx="17" ry="12" transform="rotate(-14 385 330)"/>
+    <ellipse cx="447" cy="370" rx="15" ry="11" transform="rotate(18 447 370)"/>
+    <ellipse cx="347" cy="407" rx="14" ry="10" transform="rotate(-15 347 407)"/>
+    <ellipse cx="410" cy="430" rx="15" ry="10" transform="rotate(20 410 430)"/>
+  </g>
+</svg>
